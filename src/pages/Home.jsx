@@ -37,11 +37,12 @@ function Home(){
 
 
 
-        const [searchQuery, setSearchQuery] = useState()
+        const [searchQuery, setSearchQuery] = useState("")
 
 
-        const handleProjectSearch = () => {
-            alert(searchQuery)
+        const handleProjectSearch = (e) => {
+            e.preventDefault();
+            alert(searchQuery);
         }
 
 return(
@@ -60,7 +61,9 @@ return(
 
             <div className = "projects-grid">
             {projectList.map((projectItem) => 
-                <RetroCard retroProject = {projectItem} key = {projectItem.id}/>)}
+                <RetroCard retroProject = {projectItem} key = {projectItem.id}/>
+                )
+            }
             </div>
 
         </div>
