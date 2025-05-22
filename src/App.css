@@ -1,0 +1,74 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+body{
+  background-image: url('../src/assets/images/retroFuturistic.jpg');
+  background-size: cover;
+  background-position: center;
+
+
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.retro-card{
+  width: 200px;
+  height: 300px;
+  background-color: rgb(23, 7, 23);
+  padding: 10px;
+  border:none;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.retro-card:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8); /* Cyan glow */
+}
+
+.description-heading{
+  font-size: medium;
+}
+
+.card-intro{
+  font-size: small;
+}
+
+.search-form{
+  margin-top: 10px;
+  margin-bottom: 50px
+}
+
+.search-btn{
+  margin: 15px;
+  border-radius: 13px ;
+}
+
+.search-input{
+  width: 300px;
+  height: 15px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  border-radius: 13px;
+}
+
+
+
+
+
