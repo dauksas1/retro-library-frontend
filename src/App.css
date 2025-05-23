@@ -17,6 +17,14 @@ body{
   padding: 2em;
 }
 
+.card-img{
+  width: 180px;
+  height: 130px;
+  margin-top: 8px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
 .read-the-docs {
   color: #888;
 }
@@ -28,6 +36,9 @@ body{
 }
 
 .retro-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 200px;
   height: 300px;
   background-color: rgb(23, 7, 23);
@@ -42,10 +53,16 @@ body{
 }
 
 .description-heading{
-  font-size: medium;
+  flex-shrink: 0;
+  font-size: 13px;
+  margin-top: 0;
+  margin-bottom: 3px;
 }
 
 .card-intro{
+  margin-top:0;
+  margin-left: 8px;
+  margin-right: 8px;
   font-size: small;
 }
 
@@ -59,7 +76,12 @@ body{
   border-radius: 13px ;
 }
 
+.show-interest-btn{
+  margin-top: auto;
+}
+
 .search-input{
+  margin-top:50px;
   width: 300px;
   height: 15px;
   font-size: 18px;
