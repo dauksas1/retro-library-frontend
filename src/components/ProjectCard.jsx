@@ -1,10 +1,8 @@
-//Comp Props: Name(project name), 
-//            Intro(short introduction/description), 
-//            URL(Image)
+import './ProjectCard.css'
 
 function ProjectCard({retroProject}){
 
-    function showInterest(){
+    function follow(){
         alert("Clicked")
     }
 
@@ -12,14 +10,14 @@ function ProjectCard({retroProject}){
 return(
     <div className = "retro-card">
         <div className = "retro-card-poster">
-            <img className = "card-img" src = {retroProject.url} alt = "project-image"/>
+            <img className = "card-img" src = {retroProject.imgUrl} alt = "project-image"/>
         </div>
         <div>
             <h3 className = "description-heading">{retroProject.name}</h3>
             <p className = "card-intro">{retroProject.intro}</p>
         </div>
          <div className = "retro-card-overlay">
-            <button className = "show-interest-btn" onClick={showInterest}>Follow</button>
+            <button className = "show-interest-btn" onClick={follow}>Follow</button>
         </div>
     </div>
 )

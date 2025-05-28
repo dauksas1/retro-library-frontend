@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div>
-      <NavigationBar/>
+      <NavigationBar loggedInStatus = {true}/>
       <main className = "app-container">
         <Routes>
           <Route path = '/' element = {<Home/>}/>

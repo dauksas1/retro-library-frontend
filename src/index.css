@@ -38,7 +38,7 @@ h1 {
 button {
   color: rgba(190, 165, 165, 0.87);
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 13px;
   font-weight: 500;
@@ -49,13 +49,13 @@ button {
 }
 button:hover {
   border-color: #646cff;
+  border: 2px solid rgba(53, 221, 243, 0.835); 
 }
 button:focus,
 button:focus-visible {
+  border: 2px solid rgba(53, 221, 243, 0.835); 
   outline: 4px auto -webkit-focus-ring-color;
 }
-
-/*Navigation bar*/
 
 .nav-bar {
   position: fixed;
@@ -63,16 +63,16 @@ button:focus-visible {
   left: 0;
   width: 100%;
 
-  background-color: #121212; /* Deep black background */
+  background-color: #121212dd; 
   padding: 5px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3); /* Subtle neon glow */
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
 }
 
 .nav-brand a {
-  color: #00ffff; /* Cyan neon */
+  color: #00ffff;
   font-size: 24px;
   font-weight: bold;
   text-decoration: none;
@@ -85,18 +85,17 @@ button:focus-visible {
 }
 
 .nav-links a {
-  color: #fff; /* White text */
+  color: #fff;
   font-size: 18px;
   text-decoration: none;
   transition: color 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
-  color: #ff00ff; /* Magenta neon effect */
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.8); /* Glow effect */
+  color: #ff00ff;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
 }
 
-/* Optional: Add a futuristic animated glow */
 @keyframes neon-glow {
   0% { box-shadow: 0 0 5px rgba(0, 255, 255, 0.3); }
   50% { box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); }
