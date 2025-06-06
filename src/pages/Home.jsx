@@ -56,7 +56,7 @@ return(
             <form className = "search-form" onSubmit={handleProjectSearch}>
                 <input  className = "search-input" 
                         type = "text" 
-                        placeholder='Search for project'
+                        placeholder='Project search'
                         value = {searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                 />

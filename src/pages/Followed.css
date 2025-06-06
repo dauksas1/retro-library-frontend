@@ -1,0 +1,36 @@
+.outer-followed{
+  justify-content: center;
+  align-items: center;
+  margin-top:20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(90, 203, 255, 0.682);
+  border-radius: 5px;
+  background-color: rgba(77, 12, 138, 0.594);
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+}
+
+.inner-followed {
+  margin: 20px;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: 20px;
+}
+
+.outer-followed h1{
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(40, 30, 30, 0.852);
+  border: 1px solid rgb(90, 244, 255);
+  border-radius: 5px;
+  width: 95%;
+  height: fit-content;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  background-color: rgba(0, 255, 187, 0.861);
+  font-size: 1.5vw; 
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+}

@@ -1,0 +1,82 @@
+.acc-details-cont-outer{
+  position:absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+  align-items: center;
+  margin-top:20px;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(34, 9, 56, 0.892);
+  height: 485px;
+  width: 470px;
+
+}
+
+.project-name-head{
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(40, 30, 30, 0.852);
+  border: none;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  padding-top: 2px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  background-color: rgba(0, 255, 187, 0.861);
+  font-size: 1vw; 
+}
+
+.profile-pic{
+    margin-top:20px;
+    height: 100px;
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+}
+
+.acc-details-change-form{
+    width: 300px;
+    background-color: rgba(0, 0, 0, 0.328);
+    border:none;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.email-input{
+    margin: 10px;
+}
+
+.acc-details-inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current-details-list{
+    text-align: left;
+    margin-left: 5px;
+}
+
+.decorative-cont{
+  position:absolute;
+  top: 56px;
+  left: 50%;
+  transform: translateX(-50%);
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(68, 46, 68, 0.557);
+  height: 400px;
+  width: 400px;
+
+}

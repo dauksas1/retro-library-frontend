@@ -1,14 +1,22 @@
 import './ProjectCard.css'
+import '../pages/ProjectPage.jsx'
+import { Link, useNavigate } from 'react-router-dom'
 
 function ProjectCard({retroProject}){
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/secured/projectPage/${retroProject.id}`)
+    }
 
     function follow(){
         alert("Clicked")
     }
 
-
+    
 return(
-    <div className = "retro-card">
+    <div className = "retro-card" onClick={handleClick}>
         <div className = "retro-card-poster">
             <img className = "card-img" src = {retroProject.imgUrl} alt = "project-image"/>
         </div>

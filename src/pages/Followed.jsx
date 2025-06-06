@@ -1,9 +1,9 @@
-import './Following.css'
+import './Followed.css'
 import {useState, useEffect} from 'react'
 import { getFollowedProjects} from '../services/api.js'
 import ProjectCard from '../components/ProjectCard.jsx'
 
-function Following(){
+function Followed(){
 
     const [followedProjects, setFollowedProjects] = useState([])
 
@@ -29,7 +29,7 @@ function Following(){
 
 return(
     <div className = "outer-followed">
-            <h1>Followed Projects</h1>
+            <h1>FOLLOWED PROJECTS</h1>
             <div className = "inner-followed">
                 {followedProjects.map((projectItem) => 
                     <ProjectCard retroProject = {projectItem} key = {projectItem.id}/>
@@ -40,4 +40,4 @@ return(
 )
 }
 
-export default Following
+export default Followed

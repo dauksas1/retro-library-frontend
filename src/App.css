@@ -54,6 +54,12 @@ body{
   border: 2px solid rgba(53, 221, 243, 0.835); 
 }
 
+button:focus,
+button:focus-visible {
+  border: none; 
+  outline: none;
+}
+
 
 
 
