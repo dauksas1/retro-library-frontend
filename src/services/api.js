@@ -14,21 +14,18 @@ export const searchProjects = async (query)=>{
 export const getFollowedProjects = async () => {
     const response = await fetch("http://localhost:8080/api/projects");
     const data = await response.json()
-    console.log(data)
     return data
 };
 
 export const getMyProjects = async () => {
     const response = await fetch("http://localhost:8080/api/projects");
     const data = await response.json()
-    console.log(data)
     return data
 };
 
 export const getProjectById = async (id) => {
     const response = await fetch(`http://localhost:8080/api/projects/${id}`);
     const data = await response.json()
-    console.log(data)
     return data
 };
 

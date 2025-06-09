@@ -7,6 +7,7 @@ import {useState} from 'react'
 import MyProjects from './pages/MyProjects.jsx'
 import AccountPage from './pages/AccountPage.jsx'
 import ProjectPage from './pages/ProjectPage.jsx'
+import UploadProject from './pages/UploadProject.jsx'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path = '/secured/myProjects' element = {<MyProjects/>}/>
           <Route path = '/secured/accountPage' element = {<AccountPage/>}/>
           <Route path = '/secured/projectPage/:id' element = {<ProjectPage/>}/>
+          <Route path = '/secured/uploadProject' element = {<UploadProject/>}/>
         </Routes>
       </main>
     </div>

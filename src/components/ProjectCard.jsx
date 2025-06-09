@@ -18,11 +18,11 @@ function ProjectCard({retroProject}){
 return(
     <div className = "retro-card" onClick={handleClick}>
         <div className = "retro-card-poster">
-            <img className = "card-img" src = {retroProject.imgUrl} alt = "project-image"/>
+            <img className = "card-img" src = {retroProject.projectImgUrl} alt = "project-image"/>
         </div>
         <div>
-            <h3 className = "description-heading">{retroProject.name}</h3>
-            <p className = "card-intro">{retroProject.intro}</p>
+            <h3 className = "description-heading">{retroProject.projectName}</h3>
+            <p className = "card-intro">{retroProject.cardIntro}</p>
         </div>
          <div className = "retro-card-overlay">
             <button className = "show-interest-btn" onClick={follow}>Follow</button>

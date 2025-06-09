@@ -15,6 +15,7 @@ function Home(){
 
         const loadAllProjects = async () => {
                 try{
+                    setLoading(true)
                     const allProjects = await getAllProjects();
                     setProjects(allProjects)
                 } catch(error){
@@ -66,13 +67,13 @@ return(
             </form>
 
             <div className = "projects-grid">
-            {projects.map((projectItem) => 
-                <ProjectCard retroProject = {projectItem} key = {projectItem.id}/>
-                )
-            }
+                {projects.map((projectItem) => 
+                    <ProjectCard retroProject = {projectItem} key = {projectItem.id}/>
+                    )
+                }
             </div>
 
         </div>
-)
+    )
 }
 export default Home

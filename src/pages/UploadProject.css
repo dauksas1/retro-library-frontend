@@ -30,6 +30,36 @@
     margin-left: 505px;
 }
 
+.preview-image{
+  height: 100%;
+  width: 100%;
+  border-radius: 7px;
+}
+
+.overlay h2{
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  font-size: 20px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.overlay input{
+  position: absolute;
+  bottom: 5px;
+  left: 350px;
+  font-size: 20px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  color: transparent;
+  border-radius: 5px;
+}
+
+
+
 .intro-card-cont{
     background-color: rgba(0, 0, 0, 0.837);
     position: absolute;
@@ -49,8 +79,65 @@
     text-align: left;
 }
 
+.intro-card-project-name{
+    border-radius: 7px;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.introduction-textarea{
+    padding: 10px;
+    width: 435px;
+    height: 195px;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+}
+
+.key-features-textarea{
+    padding:10px;
+    margin-top: 15px;
+    margin-left: 5px;
+    width: 540px;
+    height: 300px;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+}
+
+.summary-textarea{
+    padding: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+    width: 540px;
+    height: 550px;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+}
+
+.youtube-video-id{
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    resize: none;
+}
+
+.status-select{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: gray;
+    left:335px;
+    top:12px;
+    position: absolute;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 15px;
+    margin-left: 5px;
+}
+
 .project-title-heading{
-    
     background-color: rgba(0, 255, 255, 0.912);
     border: 1px solid black;
     border-radius: 7px;
@@ -88,15 +175,16 @@
     box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
 }
 
-.project-video {
+.project-video-id {
     position:absolute;
     left: 15px;
-    border:none;
     border-radius: 10px;
-    overflow: hidden;
     box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
-    max-height: 169px;
-    max-width: 300px;
+    height: 50px;
+    width: 300px;
+    resize: none;
+    text-align: center;
+    align-content: center;
 }
 
 .project-info-gallery-cont h3{
@@ -111,8 +199,6 @@
     margin-left: 2px;
     margin-right: 2px;
     box-shadow: 0 0 5px rgba(154, 64, 214, 0.75);
-
-
 }
 
 .project-info-heading{
@@ -129,24 +215,15 @@
     box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
 }
 
-.project-feature-list{
+.project-feature-list-upload{
     font-weight: bold;
     color: blueviolet;
     position:absolute;
-    top:55px;
+    top:35px;
     font-size: 18px;
     text-align: left;
-    margin-left: 20px;
+    margin-left: 15px;
     margin-right: 20px;
-}
-
-.project-feature-list li{
-    margin-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-align: left;
-    font-size: 15px;
-    list-style-image: linear-gradient(to left bottom, red, blue);
 }
 
 .summary-heading{
@@ -317,5 +394,29 @@
     height: 47px;
     padding-left: 3px;
     padding-right: 3px;
+}
+
+.social-media-input{
+    margin-left: 20px;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+    border:none;
+    align-content: center;
+    text-align: center;
+}
+
+#paypal-input, #email-input{
+  margin-left: 20px;
+    width: 180px;
+    height: 30px;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
+    border:none;
+    align-content: center;
+    text-align: center;
 }
 

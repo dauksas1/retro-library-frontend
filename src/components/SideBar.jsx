@@ -8,7 +8,7 @@ function SideBar({show}){
     return(
         <div className="side-bar">
             <div 
-                className='post-project-link'><Link>POST PROJECT</Link>
+                className='upload-project-link'><Link to="/secured/uploadProject">UPLOAD PROJECT</Link>
             </div>
            
                 <p>TOP SUPPLIERS</p>

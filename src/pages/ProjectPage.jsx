@@ -2,6 +2,10 @@ import './ProjectPage.css'
 import { useParams } from 'react-router-dom'
 import {getProjectById} from '../services/api.js'
 import { useEffect, useState } from 'react';
+import YouTubeVideo from '../components/YouTubeVideo.jsx'
+import { SocialIcon } from 'react-social-icons'
+import { AiOutlineMail } from "react-icons/ai";
+import { PiPaypalLogo } from "react-icons/pi";
 
 function ProjectPage(){
 
@@ -13,8 +17,11 @@ function ProjectPage(){
 
     const [error, setError] = useState(null)
 
+    const formattedText = retroProject.featureList?.split(".")
+
     const loadProject = async () => {
                     try{
+                        setLoading(true)
                         const loadedRetroProject = await getProjectById(projectParams.id);
                         setRetroProject(loadedRetroProject)
                     } catch(error){
@@ -31,32 +38,65 @@ function ProjectPage(){
 return(
     <div className = "project-page-cont">
         <div className = "page-head-cont">
-            <img className = "main-img" src = {retroProject.imgUrl} alt = "project-image"/>
+            <img className = "main-img" src = {retroProject.projectImgUrl} alt = "project-image"/>
             <div className = "intro-card-cont">
-                <h3 className = "project-title-heading">{retroProject.name}</h3>
-                <p className = "project-intro">{retroProject.intro}</p>
+                <h3 className = "project-title-heading">{retroProject.projectName}</h3>
+                <p className = "project-intro">{retroProject.projectIntro}</p>
             </div>
         </div>
         <div className='project-info-cont'>
             <div className='project-info-inner'>
-                <h3 className = "project-info-heading">STATUS: IN DEVELOPMENT {retroProject.status}</h3>
-                <div className = "project-feature-list">
-                    <p className = "key-features-list-title">KEY FEATURES:</p>
-                    <ul>
-                        <li>Demo Demo Demo Demo</li>
-                        <li>Demo Demo Demo Demo</li>
-                        <li>Demo Demo Demo Demo</li>
-                        <li>Demo Demo Demo Demo</li>
-                        <li>Demo Demo Demo Demo</li>
-                        <li>Demo Demo Demo Demo</li>
-                    </ul>
-                </div>
-                <div className = "Project Summary">
+                <h3 className='project-info-heading'>STATUS: {loading === false ? retroProject.projectStatus.toUpperCase() : "STATUS UNKNOWN"}</h3>
+                <ul className = "project-feature-list">KEY FEATURES:
+                        {loading === false  ? formattedText.map((sentence, index) => (
+                            <li key={index}>{sentence.trim()}</li>
+                        )) : <p>loading</p>}
+                </ul>
+                <div className = "project-summary">
                     <h3 className='summary-heading'>SUMMARY</h3>
+                    <p>{retroProject.projectSummary}test</p>
                 </div>
             </div>
             <div className='project-info-gallery-cont'>
-                <p>DEMO</p>
+                <h3>PROJECT LINKS</h3>
+                <div className = "project-video">
+                    <YouTubeVideo videoId = {retroProject.youTubeLink}/>
+                </div>
+                <div className = 'social-media-cont'>
+                    <h2>SOCIAL MEDIA</h2>
+                    <span className='x-span'>
+                        <SocialIcon className='x-icon' url="https://x.com" borderRadius='5px' />
+                        <a href="https://x.com" target="_blank" rel="noopener noreferrer">VISIT X</a>
+                    </span>
+                    <span className='facebook-span'>
+                        <SocialIcon className='facebook-icon' url="https://facebook.com" borderRadius='5px'/>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">VISIT FACEBOOK</a>
+                    </span>
+                    <span className='instagram-span'>
+                        <SocialIcon className='instagram-icon' url="https://instagram.com" borderRadius='5px'/>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">VISIT INSTAGRAM</a>
+                    </span>  
+                </div>
+                <div className='author-support-cont'>
+                    <h2>AUTHOR SUPPORT</h2>
+                    <span className='patreon-span'>
+                        <SocialIcon className='patreon-icon' url="https://patreon.com" borderRadius = "5px"/>
+                        <a href="https://patreon.com" target="_blank" rel="noopener noreferrer">SUPPORT VIA PATREON</a>
+                    </span>
+                    <span className='paypal-span'>
+                        <PiPaypalLogo className='paypal-icon' size = {40}/>
+                        <a href="https://paypal.com" target="_blank" rel="noopener noreferrer">SUPPORT VIA PAYPAL</a>
+                    </span>  
+                    
+                    
+                </div>
+                <div className='author-contact-cont'>
+                    <h2>AUTHOR CONTACT</h2>
+                    <span className='contact-span'>
+                        <AiOutlineMail className='author-email-icon' size = {40}/>
+                        <a href="https://paypal.com" target="_blank" rel="noopener noreferrer">AUTHOR EMAIL</a>
+                    </span>  
+                </div>
             </div>
         </div>
     </div>
