@@ -55,7 +55,7 @@ function Home(){
 
 return(
     <>
-        <NavigationBar loggedInStatus = {false}/>
+        <NavigationBar loggedInStatus = {true}/>
         <div className = "home-container">
             <form className = "search-form" onSubmit={handleProjectSearch}>
                 <input  className = "search-input" 
@@ -70,7 +70,6 @@ return(
             </form>
 
             <div className = "projects-grid">
-                {console.log(projects)}
                 {projects.map((projectItem) => 
                     <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "home"/>
                     )

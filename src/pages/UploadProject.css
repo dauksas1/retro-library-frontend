@@ -1,4 +1,21 @@
-.project-page-cont{
+.retro-card-upload{
+  position: absolute;
+  top: 100px;
+  left: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 300px;
+  background-color: rgba(23, 7, 23, 0.93);
+  padding: 10px;
+  border:none;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+.project-page-cont-upload{
     position: relative;
     background-color: blueviolet;
     border:none;
@@ -6,7 +23,7 @@
     border-radius: 10px;
     height: 1500px;
     width: 1000px;
-    margin-top: 50px;
+    margin-top: 450px;
     padding: 1px;
 }
 
@@ -418,5 +435,30 @@
     border:none;
     align-content: center;
     text-align: center;
+}
+
+#project-upload-btn{
+    color: rgb(48, 41, 41);
+    position: absolute;
+    top:960px;
+    left: 100px;
+    border-radius: 5px;
+    background-color: darkgrey;
+    width: 150px;
+    height: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.card-intro-textarea{
+    padding:10px;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 150px;
+    height: 90px;
+    border-radius: 5px;
+    resize: none;
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
 }
 

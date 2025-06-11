@@ -16,10 +16,10 @@ function NavigationBar({loggedInStatus}){
         const loggedIn = ( 
                     <nav className = "nav-bar">
                         <div className = "nav-brand">
-                            <Link to = "/">Retro Forest</Link>
+                            <Link to = "/secured">Retro Forest</Link>
                         </div>
                         <div className = "nav-links">
-                            <Link to = "/" className = "home-link">HOME</Link>
+                            <Link to = "/secured" className = "home-link">HOME</Link>
                             <Link to = "/secured/followed" className = "followed-link">FOLLOWED PROJECTS</Link>
                             <Link to = "/secured/myProjects" className = "my-projects-link">MY PROJECTS</Link>
                             <button className="sidebar-btn" onClick={toggleSidebar}><IoMenu /></button>
@@ -34,10 +34,9 @@ function NavigationBar({loggedInStatus}){
                         </div>
                         <div className = "nav-links">
                             <Link to = "/" className = "home-link">HOME</Link>
-                            <Link to = "/secured/following" className = "login-register-link">LOG IN <FiLogIn /></Link>
+                            <Link to = "/secured" className = "login-register-link">LOG IN <FiLogIn /></Link>
                         </div>
                     </nav>)
-
 
     return(
        loggedInStatus ? loggedIn : loggedOut

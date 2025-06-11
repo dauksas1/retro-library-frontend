@@ -1,9 +1,14 @@
 import './SideBar.css'
-import {Link} from 'react-router-dom'
+import {Link, Navigate, useNavigate} from 'react-router-dom'
 
 function SideBar({show}){
 
+    const navigate = useNavigate();
 
+    const logOut = () => {
+        navigate('/')
+        setTimeout(() => {alert("You have been logged out!")},100)
+    }
 
     return(
         <div className="side-bar">
@@ -34,8 +39,7 @@ function SideBar({show}){
             <div 
                 className='account-page-link'><Link to= '/secured/accountPage'>ACCOUNT PAGE</Link>
             </div>
-            <button>LOG OUT</button>
-
+            <button onClick={logOut}>LOG OUT</button>
         </div>
     )
 }

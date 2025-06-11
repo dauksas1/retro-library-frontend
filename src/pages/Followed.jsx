@@ -2,6 +2,7 @@ import './Followed.css'
 import {useState, useEffect} from 'react'
 import { getFollowedProjects} from '../services/api.js'
 import ProjectCard from '../components/ProjectCard.jsx'
+import NavigationBar from '../components/NavigationBar.jsx'
 
 function Followed(){
 
@@ -28,15 +29,18 @@ function Followed(){
     
 
 return(
-    <div className = "outer-followed">
-            <h1>FOLLOWED PROJECTS</h1>
-            <div className = "inner-followed">
-                {followedProjects.map((projectItem) => 
-                    <ProjectCard retroProject = {projectItem} key = {projectItem.id}/>
-                    )
-                }
-            </div>
-    </div>
+    <>  
+        <NavigationBar loggedInStatus = {true}/>
+        <div className = "outer-followed">
+                <h1>FOLLOWED PROJECTS</h1>
+                <div className = "inner-followed">
+                    {followedProjects.map((projectItem) => 
+                        <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "followed"/>
+                        )
+                    }
+                </div>
+        </div>
+    </>
 )
 }
 

@@ -2,6 +2,7 @@ import './MyProjects.css'
 import { useState, useEffect } from 'react'
 import { getMyProjects } from '../services/api.js'
 import ProjectCard from '../components/ProjectCard'
+import NavigationBar from '../components/NavigationBar.jsx'
 
 
 function MyProjects(){
@@ -28,16 +29,19 @@ function MyProjects(){
         },[])
 
     return(
-        <div className = "outer-my-projects">
-            <h1>MY PROJECTS</h1>
-            <div className = "inner-my-projects">
-                {myProjects.map
-                    ((projectItem) => 
-                    <ProjectCard retroProject = {projectItem} key = {projectItem.id}/>
-                    )
-                }
+        <>
+        <NavigationBar loggedInStatus = {true}/>
+            <div className = "outer-my-projects">
+                <h1>MY PROJECTS</h1>
+                <div className = "inner-my-projects">
+                    {myProjects.map
+                        ((projectItem) => 
+                            <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "author"/>
+                        )
+                    }
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 export default MyProjects
