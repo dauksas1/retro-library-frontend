@@ -20,6 +20,8 @@ function ProjectPage(){
 
     const formattedText = retroProject.featureList?.split(".")
 
+    console.log(retroProject.youTubeLink)
+
     const loadProject = async () => {
                     try{
                         setLoading(true)

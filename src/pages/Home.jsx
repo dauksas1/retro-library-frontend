@@ -70,7 +70,6 @@ return(
             </form>
 
             <div className = "projects-grid">
-                {console.log(projects)}
                 {projects.map((projectItem) => 
                     <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "home"/>
                     )

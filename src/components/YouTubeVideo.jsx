@@ -3,8 +3,6 @@
 
 
  function YouTubeVideo({videoId}){
-     
-    console.log(videoId)
     const options = {
             height: "169",
             width: "300",

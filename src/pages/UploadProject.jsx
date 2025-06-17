@@ -15,6 +15,8 @@ function UploadProject(){
         setFile(URL.createObjectURL(e.target.files[0]));
     }
 
+    const authorId = 1;
+
     const handleSubmit = (e) => {
         const formedRetroProject = {
             projectName: document.querySelector('.intro-card-project-name').value,
@@ -26,8 +28,10 @@ function UploadProject(){
             youTubeLink: document.querySelector('.project-video-id').value,
             instaLink: "test",
             patreonLink: "test",
-            projectImgUrl: "../../public/demoImages/ps2hd.jpg"
+            projectImgUrl: "../../public/demoImages/ps2hd.jpg",
+            author:{id:authorId}
         }
+        console.log(authorId)
 
       uploadProject(formedRetroProject)
 

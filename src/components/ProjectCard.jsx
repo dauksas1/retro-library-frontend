@@ -1,6 +1,7 @@
 import './ProjectCard.css'
 import '../pages/ProjectPage.jsx'
 import { Link, useNavigate } from 'react-router-dom'
+import { deleteProjectApi } from '../services/api.js';
 
 function ProjectCard({retroProject, purpose}){
 
@@ -27,7 +28,9 @@ function ProjectCard({retroProject, purpose}){
 
     function deleteProject(e){
         e.stopPropagation()
-        alert("Deleted")
+        deleteProjectApi(retroProject.id);
+        console.log(retroProject.id)
+        window.location.reload()
     }
 
 

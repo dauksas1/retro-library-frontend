@@ -1,7 +1,7 @@
 import './SideBar.css'
-import {Link, Navigate, useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
-function SideBar({show}){
+function SideBar(){
 
     const navigate = useNavigate();
 

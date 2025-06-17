@@ -53,7 +53,7 @@ function EditProject(){
                 projectImgUrl: retroProject.projectImgUrl
         })
 
-    editProject(retroProject)
+            editProject(retroProject)
 
     }
 
