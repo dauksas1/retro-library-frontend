@@ -34,7 +34,7 @@ function NavigationBar({loggedInStatus}){
                         </div>
                         <div className = "nav-links">
                             <Link to = "/" className = "home-link">HOME</Link>
-                            <Link to = "/secured" className = "login-register-link">LOG IN <FiLogIn /></Link>
+                            <Link to = "/auth" className = "login-register-link">LOG IN <FiLogIn /></Link>
                         </div>
                     </nav>)
 

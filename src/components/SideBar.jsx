@@ -1,13 +1,16 @@
+import { useAuth } from './Security/AuthContext';
 import './SideBar.css'
 import {Link, useNavigate} from 'react-router-dom'
 
 function SideBar(){
 
     const navigate = useNavigate();
+    const {logout} = useAuth();
 
     const logOut = () => {
-        navigate('/')
-        setTimeout(() => {alert("You have been logged out!")},100)
+        logout();
+        navigate('/');
+        setTimeout(() => {alert("You have been logged out!")},100);
     }
 
     return(

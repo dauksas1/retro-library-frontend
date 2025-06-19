@@ -24,7 +24,7 @@ export const getMyProjects = async () => {
 };
 
 export const getProjectById = async (id) => {
-    const response = await fetch(`http://localhost:8080/api/projects/${id}`);
+    const response = await fetch(`http://localhost:8080/api/user/projects/${id}`);
     const data = await response.json()
     return data
 };
@@ -58,4 +58,29 @@ export const deleteProjectApi = async (id) => {
         });
     console.log(response)
 };
+
+export const handleLogin = async (credentials) => {
+  try {
+    const res = await fetch("http://localhost:8080/auth/signin", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(credentials),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      return { success: true, token: data.jwt };
+    } else {
+      return { success: false, message: "Invalid credentials"
+      };
+    }
+  } catch (error) {
+    console.error("Login error:", error);
+    return { success: false };
+  }
+};
+
+
+
+
 

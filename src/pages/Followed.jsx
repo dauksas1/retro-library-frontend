@@ -35,7 +35,7 @@ return(
                 <h1>FOLLOWED PROJECTS</h1>
                 <div className = "inner-followed">
                     {followedProjects.map((projectItem) => 
-                        <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "followed"/>
+                        <ProjectCard retroProject = {projectItem} key = {projectItem.id} view = "followed"/>
                         )
                     }
                 </div>

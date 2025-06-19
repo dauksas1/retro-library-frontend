@@ -7,7 +7,9 @@ import NavigationBar from '../components/NavigationBar.jsx'
 
 function MyProjects(){
 
-     const [myProjects, setMyProjects] = useState([])
+        const userId = 1;
+
+        const [myProjects, setMyProjects] = useState([])
     
         const [error, setError] = useState(null)
     
@@ -36,7 +38,7 @@ function MyProjects(){
                 <div className = "inner-my-projects">
                     {myProjects.map
                         ((projectItem) => 
-                            <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "author"/>
+                            <ProjectCard retroProject = {projectItem} key = {projectItem.id} view = "author"/>
                         )
                     }
                 </div>

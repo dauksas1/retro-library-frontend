@@ -3,7 +3,7 @@ import '../pages/ProjectPage.jsx'
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteProjectApi } from '../services/api.js';
 
-function ProjectCard({retroProject, purpose}){
+function ProjectCard({retroProject, view}){
 
     const navigate = useNavigate();
 
@@ -35,6 +35,18 @@ function ProjectCard({retroProject, purpose}){
 
 
     const homeView = 
+    
+    <div className = "retro-card" onClick={handleClick}>
+        <div className = "retro-card-poster">
+            <img className = "card-img" src = {retroProject.projectImgUrl} alt = "project-image"/>
+        </div>
+        <div>
+            <h3 className = "description-heading">{retroProject.projectName}</h3>
+            <p className = "card-intro">{retroProject.cardIntro}</p>
+        </div>
+    </div>
+
+    const homeViewSecured = 
     
     <div className = "retro-card" onClick={handleClick}>
         <div className = "retro-card-poster">
@@ -83,9 +95,10 @@ function ProjectCard({retroProject, purpose}){
     
 return(
     <>
-        {purpose === "home" && homeView}
-        {purpose === "author"  && authorView}
-        {purpose === "followed" && followedView}
+        {view === "home" && homeView}
+        {view === "homeSecured" && homeViewSecured}
+        {view === "author"  && authorView}
+        {view === "followed" && followedView}
     </>
     
 )

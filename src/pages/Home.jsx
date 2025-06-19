@@ -71,7 +71,7 @@ return(
 
             <div className = "projects-grid">
                 {projects.map((projectItem) => 
-                    <ProjectCard retroProject = {projectItem} key = {projectItem.id} purpose = "home"/>
+                    <ProjectCard retroProject = {projectItem} key = {projectItem.id} view = "home"/>
                     )
                 }
             </div>
