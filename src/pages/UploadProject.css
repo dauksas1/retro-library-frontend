@@ -1,7 +1,7 @@
 .retro-card-upload{
   position: absolute;
-  top: 100px;
-  left: 600px;
+  top: 150px;
+  left: 450px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -14,6 +14,30 @@
   transition: box-shadow 0.3s ease-in-out;
   box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
 }
+
+.platform-heading {
+    position: absolute;
+    top: 130px;
+    left: 750px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 300px;
+    background-color: rgba(23, 7, 23, 0.93);
+    padding: 10px;
+    border:none;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+}
+
+.platform-select{
+    height: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+
 
 .project-page-cont-upload{
     position: relative;
@@ -461,4 +485,8 @@
     resize: none;
     box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
 }
+
+
+
+
 

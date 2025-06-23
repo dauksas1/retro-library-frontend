@@ -8,9 +8,7 @@ function SideBar(){
     const {logout} = useAuth();
 
     const logOut = () => {
-        logout();
-        navigate('/');
-        setTimeout(() => {alert("You have been logged out!")},100);
+        logout()
     }
 
     return(
@@ -29,15 +27,38 @@ function SideBar(){
             
             <p>DESKTOP PROJECTS</p>
             <ul>
-                <li><Link>PC</Link></li>
-                <li><Link>MAC</Link></li>
+                <li>
+                    <Link to="/secured/filtered" state={{ platform: "PC" }}>
+                        PC
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/secured/filtered" state={{ platform: "MAC" }}>
+                        MAC
+                    </Link>
+                </li>
             </ul>
             <p>CONSOLE PROJECTS</p>
             <ul>
-                <li><Link>PLAYSTATION 1</Link></li>
-                <li><Link>PLAYSTATION 2</Link></li>
-                <li><Link>SEGA DREAMCAST</Link></li>
-                <li><Link>XBOX ORIGINAL</Link></li>
+                <li>
+                    <Link to="/secured/filtered" state={{ platform: "PLAYSTATION1" }}
+                        >PLAYSTATION 1
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/secured/filtered" state={{ platform: "PLAYSTATION2" }} >
+                        PLAYSTATION 2
+                    </Link></li>
+                <li>
+                    <Link to="/secured/filtered" state={{ platform: "SEGADREAMCAST" }} >
+                        SEGA DREAMCAST
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/secured/filtered" state={{ platform: "XBOX" }} >
+                        XBOX ORIGINAL
+                    </Link>
+                </li>
             </ul>
             <div 
                 className='account-page-link'><Link to= '/secured/accountPage'>ACCOUNT PAGE</Link>

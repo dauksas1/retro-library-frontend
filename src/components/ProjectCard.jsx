@@ -1,9 +1,15 @@
 import './ProjectCard.css'
 import '../pages/ProjectPage.jsx'
-import { Link, useNavigate } from 'react-router-dom'
 import { deleteProjectApi } from '../services/api.js';
+import { useAuth } from './Security/AuthContext.jsx';
+import { subscribeToProject, unSubscribeToProject } from '../services/api.js';
+import { useNavigate } from 'react-router-dom';
 
-function ProjectCard({retroProject, view}){
+
+
+function ProjectCard({retroProject, view, onUnfollow, onDelete}){
+
+    const {token, user} = useAuth();
 
     const navigate = useNavigate();
 
@@ -13,12 +19,13 @@ function ProjectCard({retroProject, view}){
 
     function follow(e){
         e.stopPropagation()
-        alert("Followed")
+        subscribeToProject(user.userId, retroProject.id, token)
     }
 
     function unfollow(e){
         e.stopPropagation()
-        alert("Unfollowed")
+        unSubscribeToProject(user.userId, retroProject.id, token)
+        .then(() => {onUnfollow(retroProject.id)})
     }
 
     function editProject(e){
@@ -28,9 +35,8 @@ function ProjectCard({retroProject, view}){
 
     function deleteProject(e){
         e.stopPropagation()
-        deleteProjectApi(retroProject.id);
-        console.log(retroProject.id)
-        window.location.reload()
+        deleteProjectApi(retroProject.id, token)
+        .then(()=>{onDelete(retroProject.id)});
     }
 
 
@@ -63,7 +69,7 @@ function ProjectCard({retroProject, view}){
 
     const authorView =  
     
-    <div className = "retro-card" onClick={handleClick}>
+   <div className="retro-card" onClick={handleClick}>
         <div className = "retro-card-poster">
             <img className = "card-img" src = {retroProject.projectImgUrl} alt = "project-image"/>
         </div>
@@ -73,8 +79,8 @@ function ProjectCard({retroProject, view}){
         </div>
          <div className = "retro-card-overlay">
             <button className = "edit-btn" onClick={editProject}>EDIT</button>
-            <button className = "delete-btn" onClick={deleteProject}>DELETE</button>
-        </div>
+                    <button className = "delete-btn" onClick={deleteProject}>DELETE</button>
+        </div>  
     </div>
 
     const followedView =  
@@ -98,7 +104,7 @@ return(
         {view === "home" && homeView}
         {view === "homeSecured" && homeViewSecured}
         {view === "author"  && authorView}
-        {view === "followed" && followedView}
+        {view === "user" && followedView}
     </>
     
 )

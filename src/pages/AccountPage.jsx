@@ -1,7 +1,25 @@
 import './AccountPage.css';
 import NavigationBar from '../components/NavigationBar';
+import { useAuth } from '../components/Security/AuthContext';
+import { getUserDetails } from '../services/api';
+import { useState, useEffect } from 'react';
 
-function AccountPage(retroProject){
+function AccountPage(){
+
+    const {user, token} = useAuth();
+
+    const [userDetails, setUserDetails] = useState(null);
+
+
+    const loadUserDetails = async () => {
+            const result = await getUserDetails(user.sub, token);
+            setUserDetails(result)
+    }
+
+    useEffect(() => {
+        loadUserDetails()
+    },[])
+
     return(
         <>
             <NavigationBar loggedInStatus = {true}/>
@@ -15,9 +33,8 @@ function AccountPage(retroProject){
                     <div className='acc-details-inner'>
                         <form className='acc-details-change-form'>
                             <ul className='current-details-list'>
-                                <li>Name: Demo Demo</li>
-                                <li>Country: Demo</li>
-                                <li>Email: demo@demo.com</li>
+                                <li>Name: {user.sub}</li>
+                                <li>Email: {userDetails?.email || 'Loading...'}</li>
                             </ul>
                             <label>
                                 Email change:

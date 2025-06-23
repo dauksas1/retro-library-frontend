@@ -34,3 +34,20 @@
   font-size: 1.5vw; 
   box-shadow: 0 0 15px rgba(52, 152, 219, 0.75);
 }
+
+.no-projects {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  width: 1000px;
+}
+
+.no-projects h2 {
+  margin: 0;
+  text-align: center;
+  color: rgb(40, 36, 36);
+}
+
+

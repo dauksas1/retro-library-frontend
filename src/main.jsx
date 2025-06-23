@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from './components/Security/AuthContext';
+import '@ant-design/v5-patch-for-react-19';
 
 
 

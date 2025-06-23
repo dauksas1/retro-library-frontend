@@ -1,21 +1,48 @@
+import ps1Icon from '../../public/demoImages/ps1Icon.png'
+import ps2Icon from '../../public/demoImages/ps2Icon.png'
+import ps3Icon from '../../public/demoImages/ps3Icon.png'
+import xboxIcon from '../../public/demoImages/xboxIcon.png'
+import xbox360Icon from '../../public/demoImages/xbox360Icon.png'
+import segaIcon from '../../public/demoImages/segaIcon.png'
+import segaDreamcastIcon from '../../public/demoImages/segaDreamcastIcon.png'
+import pcIcon from '../../public/demoImages/pcIcon.png'
+import macIcon from '../../public/demoImages/macIcon.png'
+import otherIcon from '../../public/demoImages/otherIcon.png'
+
 import './UploadProject.css'
 import { useState } from 'react';
 import { SocialIcon } from 'react-social-icons'
 import { AiOutlineMail } from "react-icons/ai";
 import { PiPaypalLogo } from "react-icons/pi";
 import { uploadProject } from '../services/api';
+import { useAuth } from '../components/Security/AuthContext';
 import NavigationBar from '../components/NavigationBar';
+
 
 function UploadProject(){
 
+    const {token, user} = useAuth();
+
     const [file, setFile] = useState("../../public/demoImages/retroFuturistic.jpg");
 
+    const [selectedPlatform, setSelectedPlatform] = useState('PLAYSTATION1');
+
+        const platformIcons = {
+        PLAYSTATION1: ps1Icon,
+        PLAYSTATION2: ps2Icon,
+        PLAYSTATION3: ps3Icon,
+        XBOX: xboxIcon,
+        XBOX360: xbox360Icon,
+        SEGA: segaIcon,
+        SEGADREAMCAST: segaDreamcastIcon,
+        PC: pcIcon,
+        MAC: macIcon,
+        OTHER: otherIcon
+    };
+
     const selectProjectImage = (e) => {
-        console.log(e.target.files);
         setFile(URL.createObjectURL(e.target.files[0]));
     }
-
-    const authorId = 1;
 
     const handleSubmit = (e) => {
         const formedRetroProject = {
@@ -29,26 +56,57 @@ function UploadProject(){
             instaLink: "test",
             patreonLink: "test",
             projectImgUrl: "../../public/demoImages/ps2hd.jpg",
-            author:{id:authorId}
+            platform: document.querySelector('.platform-select').value,
+            author:{id:user.userId}
         }
-        console.log(authorId)
 
-      uploadProject(formedRetroProject)
+      uploadProject(formedRetroProject, token)
 
     }
+
+
 
 return(
         <>
             <NavigationBar loggedInStatus = {true}/>
-            <div className = "retro-card-upload">
-                <div className = "retro-card-poster">
-                    <img className = "card-img" src = {file} alt = "project-image"/>
+            <div className='project-upload-header'>
+                <div className = "retro-card-upload">
+                    <div className = "retro-card-poster">
+                        <img className = "card-img" src = {file} alt = "project-image"/>
+                    </div>
+                    <div>
+                        <h3 className = "description-heading">Project Name</h3>
+                        <textarea className='card-intro-textarea' type='text' maxLength={109} placeholder='SHORT PROJECT CARD DESCRIPTION, MAX CHARACTERS: 109'/>
+                    </div>
                 </div>
-                <div>
-                    <h3 className = "description-heading">Project Name</h3>
-                    <textarea className='card-intro-textarea' type='text' maxLength={109} placeholder='SHORT PROJECT CARD DESCRIPTION, MAX CHARACTERS: 109'/>
+                <div className="platform-picker">
+                    <h3 className="platform-heading">
+                        PLATFORM:
+                            <img
+                            className="platform-image"
+                            src={platformIcons[selectedPlatform]}
+                            alt={`${selectedPlatform} icon`}
+                            />
+                        <select
+                            className="platform-select"
+                            value={selectedPlatform}
+                            onChange={(e) => setSelectedPlatform(e.target.value)}
+                        >
+                            <option value="PLAYSTATION1">PLAYSTATION 1</option>
+                            <option value="PLAYSTATION2">PLAYSTATION 2</option>
+                            <option value="PLAYSTATION3">PLAYSTATION 3</option>
+                            <option value="XBOX">XBOX</option>
+                            <option value="XBOX360">XBOX360</option>
+                            <option value="SEGA">SEGA</option>
+                            <option value="SEGADREAMCAST">SEGA DREAMCAST</option>
+                            <option value="PC">PC</option>
+                            <option value="MAC">MAC</option>
+                            <option value="OTHER">OTHER</option>
+                        </select>
+                    </h3>
                 </div>
             </div>
+           
             <div className = "project-page-cont-upload">
                 <div className = "page-head-cont">
                     <div className="main-img">

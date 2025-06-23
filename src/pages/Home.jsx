@@ -6,6 +6,7 @@ import NavigationBar from '../components/NavigationBar.jsx'
 
 function Home(){
     
+    
         const [projects, setProjects] = useState([])
 
         const [searchQuery, setSearchQuery] = useState("")

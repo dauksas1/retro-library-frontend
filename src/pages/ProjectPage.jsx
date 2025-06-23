@@ -7,8 +7,11 @@ import { AiOutlineMail } from "react-icons/ai";
 import { PiPaypalLogo } from "react-icons/pi";
 import  NavigationBar from '../components/NavigationBar.jsx';
 import  YouTubeVideo from '../components/YouTubeVideo.jsx'
+import { useAuth } from '../components/Security/AuthContext.jsx';
 
 function ProjectPage(){
+
+    const {token} = useAuth();
 
     const projectParams = useParams();
 
@@ -22,7 +25,7 @@ function ProjectPage(){
     const loadProject = async () => {
                     try{
                         setLoading(true)
-                        const loadedRetroProject = await getProjectById(projectParams.id);
+                        const loadedRetroProject = await getProjectById(projectParams.id, token);
                         setRetroProject(loadedRetroProject)
                     } catch(error){
                         setError("Error occured while fetching a project")
@@ -34,6 +37,7 @@ function ProjectPage(){
     useEffect(() => {
         loadProject()
     }, [] )
+
 
 return(
     <>

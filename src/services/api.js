@@ -11,67 +11,154 @@ export const searchProjects = async (query)=>{
     return data
 };
 
-export const getFollowedProjects = async () => {
-    const response = await fetch("http://localhost:8080/api/projects");
+export const getFollowedProjects = async (userId, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/subscribed/${userId}`,{
+        method : 'GET',
+        headers : {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        }
+    });
     const data = await response.json()
     return data
 };
 
-export const getMyProjects = async () => {
-    const response = await fetch("http://localhost:8080/api/projects");
+export const getMyProjects = async (id, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/myProjects/${id}`,{
+        method : 'GET',
+        headers : {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        }
+    });
     const data = await response.json()
     return data
 };
 
-export const getProjectById = async (id) => {
-    const response = await fetch(`http://localhost:8080/api/user/projects/${id}`);
+export const getProjectsByPlatform = async (platform, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/byPlatform/${platform}`,{
+        method : 'GET',
+        headers : {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        }
+    });
     const data = await response.json()
     return data
 };
 
-export const uploadProject = async (formedRetroProject) => {
-    const response = await fetch(`http://localhost:8080/api/projects/upload`,
+export const getProjectById = async (id, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/${id}`,{
+        method : 'GET',
+        headers : {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        }
+    });
+    if(response.ok){
+        const data = await response.json()
+        return data 
+    }else {
+        throw new Error(`Error ${response.status}: ${data.message || 'Failed to fetch project'}`);
+    }
+    
+};
+
+export const uploadProject = async (formedRetroProject, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/upload`,
         {   
             method:"POST",
-            headers:{"Content-Type": "application/json"},
+            headers:{
+                'Authorization' : `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(formedRetroProject),
         });
-    console.log(response)
+    const text = await response.text();
+
+    if(response.ok){
+        alert(text)
+    }else{
+        alert(text)
+    }
 };
 
-export const editProject = async (retroProject) => {
-    console.log(retroProject.id)
-    const response = await fetch(`http://localhost:8080/api/projects/editProject/${retroProject.id}`,
+export const subscribeToProject = async (userId, projectId, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/subscribe/${userId}/${projectId}`,
+        {   
+            method:"POST",
+            headers:{
+                'Authorization' : `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+        });
+    if(response.ok){
+        alert("Project added to your subscriber list")
+    }else{
+        return response.text().then(text => alert(text) )
+    }
+};
+
+export const unSubscribeToProject = async (userId, projectId, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/unsubscribe/${userId}/${projectId}`,
+        {   
+            method:"POST",
+            headers:{
+                'Authorization' : `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+        });
+     const text = await response.text();
+
+    if(response.ok){
+        alert(text)
+    }else{
+        alert(text)
+    }
+};
+
+export const editProject = async (retroProject, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/editProject/${retroProject.id}`,
         {   
             method:"PUT",
-            headers:{"Content-Type": "application/json"},
+            headers:{
+                'Authorization' : `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(retroProject),
         });
-    console.log(response)
+    if(response.ok){
+        alert("Project edit completed.")
+    }
 };
 
-export const deleteProjectApi = async (id) => {
-    const response = await fetch(`http://localhost:8080/api/projects/deleteProject/${id}`,
+export const deleteProjectApi = async (id, token) => {
+    const response = await fetch(`http://localhost:8080/api/user/projects/deleteProject/${id}`,
         {   
             method:"DELETE",
-            headers:{"Content-Type": "application/json"},
+            headers:{
+                'Authorization' : `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
         });
-    console.log(response)
+    if(response.ok){
+        alert("Project successfuly deleted.")
+    }
 };
 
 export const handleLogin = async (credentials) => {
   try {
-    const res = await fetch("http://localhost:8080/auth/signin", {
+    const response = await fetch("http://localhost:8080/auth/signin", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(credentials),
     });
 
-    if (res.ok) {
-      const data = await res.json();
+    if (response.ok) {
+      const data = await response.json();
       return { success: true, token: data.jwt };
     } else {
-      return { success: false, message: "Invalid credentials"
+      return { success: false, message: "Incorrect username or/and password."
       };
     }
   } catch (error) {
@@ -80,7 +167,42 @@ export const handleLogin = async (credentials) => {
   }
 };
 
+export const handleUserRegistration = async (userDetails) => {
+  try {
+    const response = await fetch("http://localhost:8080/auth/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userDetails),
+    });
+
+    if (response.ok) {
+      alert("Registration was successful.");
+    } else {
+      return response.text().then(text => alert(text));
+    }
+    } catch (error) {
+        console.error("Registration error:", error);
+        alert("Something went wrong during registration.");
+    }
+};
+
+export const getUserDetails = async (userName, token) => {
+    const response = await fetch(`http://localhost:8080/user/details/${userName}`,{
+        method : 'GET',
+        headers : {
+            'Authorization' : `Bearer ${token}`,
+            'Content-Type' : 'application/json'
+        }
+    });
+    if (response.ok) {
+        try {
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            throw new Error('Received invalid JSON response');
+        }
+    }
 
 
-
-
+    
+};
