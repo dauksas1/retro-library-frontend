@@ -9,6 +9,9 @@ body{
   background-image: url('../src/assets/images/retroFuturistic.jpg');
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+
+
 }
 
 .read-the-docs {

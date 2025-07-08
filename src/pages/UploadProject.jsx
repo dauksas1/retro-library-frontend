@@ -53,11 +53,17 @@ function UploadProject(){
             featureList: document.querySelector('.key-features-textarea').value,
             projectSummary: document.querySelector('.summary-textarea').value,
             youTubeLink: document.querySelector('.project-video-id').value,
-            instaLink: "test",
-            patreonLink: "test",
+            xLink: document.querySelector('.x-input').value,
+            facebookLink: document.querySelector('.facebook-input').value,
+            instaLink: document.querySelector('.instagram-input').value,
+            patreonLink: document.querySelector('.patreon-input').value,
+            payPalLink: document.querySelector('.paypal-input').value,
             projectImgUrl: "../../public/demoImages/ps2hd.jpg",
             platform: document.querySelector('.platform-select').value,
-            author:{id:user.userId}
+            author:{
+                id:user.userId, 
+                authorEmail: document.querySelector('.email-input').value
+            }
         }
 
       uploadProject(formedRetroProject, token)
@@ -146,33 +152,33 @@ return(
                             <h2>SOCIAL MEDIA</h2>
                             <span className='x-span'>
                                 <SocialIcon className='x-icon' url="https://x.com" borderRadius='5px' />
-                                <input className = 'social-media-input' type="text" placeholder='Your X account' />
+                                <input className = 'x-input' type="text" placeholder='Your X account' />
                             </span>
                             <span className='facebook-span'>
                                 <SocialIcon className='facebook-icon' url="https://facebook.com" borderRadius='5px'/>
-                                <input className = 'social-media-input' type="text" placeholder='Your Facebook account' />
+                                <input className = 'facebook-input' type="text" placeholder='Your Facebook account' />
                             </span>
                             <span className='instagram-span'>
                                 <SocialIcon className='instagram-icon' url="https://instagram.com" borderRadius='5px'/>
-                                <input className = 'social-media-input' type="text" placeholder='Your Instagram account' />
+                                <input className = 'instagram-input' type="text" placeholder='Your Instagram account' />
                             </span>  
                         </div>
                         <div className='author-support-cont'>
                             <h2>AUTHOR SUPPORT</h2>
                             <span className='patreon-span'>
                                 <SocialIcon className='patreon-icon' url="https://patreon.com" borderRadius = "5px"/>
-                                <input className = 'social-media-input' type="text" placeholder='Your Patreon account' />
+                                <input className = 'patreon-input' type="text" placeholder='Your Patreon account' />
                             </span>
                             <span className='paypal-span'>
                                 <PiPaypalLogo className='paypal-icon' size = {40}/>
-                                <input id = 'paypal-input' type="text" placeholder='Your Paypal account' />
+                                <input className = 'paypal-input' type="text" placeholder='Your Paypal account' />
                             </span>  
                         </div>
                         <div className='author-contact-cont'>
                             <h2>AUTHOR CONTACT</h2>
                             <span className='contact-span'>
                                 <AiOutlineMail className='author-email-icon' size = {40}/>
-                                <input id = 'email-input' type="text" placeholder='Your email address' />
+                                <input className = 'email-input' type="text" placeholder='Your email address' />
                             </span>
                             <button id = 'project-upload-btn' onClick={handleSubmit}>UPLOAD</button>
                         </div>

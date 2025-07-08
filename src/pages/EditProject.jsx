@@ -8,8 +8,6 @@ import { editProject } from '../services/api';
 import  NavigationBar from '../components/NavigationBar';
 import { getProjectById } from '../services/api';
 import { useAuth } from '../components/Security/AuthContext';
-import { Popconfirm } from 'antd';
-import { useNavigate } from 'react-router-dom';
 
 function EditProject(){
 
@@ -29,7 +27,7 @@ function EditProject(){
                         try{
                             setLoading(true)
                             const loadedRetroProject = await getProjectById(projectParams.id, token);
-                            setRetroProject(loadedRetroProject)
+                            setRetroProject(loadedRetroProject);
                         } catch(error){
                             setError("Error occured while fetching a project")
                         } finally{
@@ -41,26 +39,9 @@ function EditProject(){
         setFile(URL.createObjectURL(e.target.files[0]));
     }
 
-    const handleSubmit = (e) => {
-        const   updatedProject = {
-                    id: retroProject.id,
-                    projectName: document.querySelector('.intro-card-project-name').value,
-                    cardIntro: document.querySelector('.card-intro-textarea').value,
-                    projectIntro: document.querySelector('.introduction-textarea').value,
-                    projectStatus: document.querySelector('.status-select').value,
-                    featureList: document.querySelector('.key-features-textarea').value,
-                    projectSummary: document.querySelector('.summary-textarea').value,
-                    youTubeLink: document.querySelector('.project-video-id').value,
-                    instaLink: document.querySelector('.instagram-input').value,
-                    xLink: document.querySelector('.x-input').value,
-                    facebookLink: document.querySelector('.facebook-input').value,
-                    patreonLink: document.querySelector('.patreon-input').value,
-                    projectImgUrl: retroProject.projectImgUrl,
-                    author:{id: user?.userId}
-                }
-
-            editProject(updatedProject, token);
-
+    const handleSubmit = () => {
+            console.log(retroProject)
+            editProject(retroProject, token);
     };
 
     useEffect(() => {
@@ -185,7 +166,7 @@ return(
                         </span>
                         <span className='paypal-span'>
                             <PiPaypalLogo className='paypal-icon' size = {40}/>
-                            <input  id = 'paypal-input' 
+                            <input  className = 'paypal-input' 
                                     type="text"
                                     value = {retroProject.payPalLink}
                                     onChange = {(e) => setRetroProject({...retroProject, payPalLink: e.target.value})}/>
@@ -195,10 +176,10 @@ return(
                         <h2>AUTHOR CONTACT</h2>
                         <span className='contact-span'>
                             <AiOutlineMail className='author-email-icon' size = {40}/>
-                            <input  id = 'email-input' 
-                                    type="text" 
-                                    value = {retroProject.authorEmailAddress}
-                                    onChange = {(e) => setRetroProject({...retroProject, authorEmailAddress: e.target.value})}/>
+                            <input  className ='email-input' 
+                                    type="email" 
+                                    value = {retroProject.authorDTO?.authorEmail || "fetching"}
+                                    onChange = {(e) => setRetroProject({...retroProject, authorDTO:{...retroProject.authorDTO ,authorEmail : e.target.value}})}/>
                         </span>
                             <button
                                 id="submit-changes-btn"
